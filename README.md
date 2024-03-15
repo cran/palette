@@ -1,0 +1,80 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# palette <img src="man/figures/logo.png" align="right" height="138" alt="" />
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/christopherkenny/palette/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/christopherkenny/palette/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![palette status
+badge](https://christopherkenny.r-universe.dev/badges/palette)](https://christopherkenny.r-universe.dev/palette)
+[![Codecov test
+coverage](https://codecov.io/gh/christopherkenny/palette/branch/main/graph/badge.svg)](https://app.codecov.io/gh/christopherkenny/palette?branch=main)
+<!-- badges: end -->
+
+`palette` provides a lightweight infrastructure for working with color
+palettes in R. The primary goal is to place colors directly next to
+their character representations. To do this, we create a palette class
+based on [`vctrs`](https://vctrs.r-lib.org/index.html). We then provide
+methods for this class, including `print()`, `plot()`, and
+[`pillar`](https://pillar.r-lib.org/). To keep it lightweight and usable
+in other packages, the only direct dependencies are `vctrs`, `cli`, and
+`pillar`.
+
+## Installation
+
+You can install the development version of palette from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages('pak')
+pak::pak('christopherkenny/palette')
+```
+
+## Using `palette`
+
+`palette` primarily provides a `palette` `vctrs` class. Using included
+data, `roygbiv`, a length 7 vector of hex codes, we can create a
+palette.
+
+``` r
+library(palette)
+#> 
+#> Attaching package: 'palette'
+#> The following object is masked from 'package:grDevices':
+#> 
+#>     palette
+palette(roygbiv)
+```
+
+<div align="center">
+
+<img src = "man/figures/README-print.png" width = "700px" align = "left">
+
+</div>
+
+<br><br> <br><br>
+
+There is also a `plot()` method for visualizing the colors:
+
+``` r
+plot(palette(roygbiv))
+```
+
+<img src="man/figures/README-plot-1.png" width="100%" />
+
+For use within `tibble`s, there is a `pillar_shaft` method:
+
+``` r
+tibble::tibble(
+  color = palette(roygbiv)
+)
+```
+
+<div align="center">
+
+<img src = "man/figures/README-pillar.png" width = "200px" align = "left">
+
+</div>
